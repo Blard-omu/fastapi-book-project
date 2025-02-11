@@ -1,0 +1,25 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy API
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+            cd /path/to/your/app
+            git pull origin main
+            source venv/bin/activate
+            pip install -r requirements.txt
+            sudo systemctl restart your-app.service
+          EOF
