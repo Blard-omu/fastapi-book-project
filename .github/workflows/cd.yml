@@ -1,25 +1,61 @@
-name: CD
+# name: Continuous Deployment (CD)
+
+# on:
+#   push:
+#     branches:
+#       - main  # Deploys when code is pushed to main
+
+# jobs:
+#   deploy:
+#     name: Deploy to AWS EC2
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v3
+
+#       - name: Set up SSH Key
+#         run: |
+#           echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > private_key.pem
+#           chmod 600 private_key.pem
+
+#       - name: Deploy to EC2
+#         run: |
+#           ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@13.60.87.195 << 'EOF'
+#             cd /home/ubuntu/fastapi-book-project
+#             git pull origin main
+#             source /home/ubuntu/fastapi-book-project/venv/bin/activate
+#             pip install -r requirements.txt
+#             sudo systemctl restart fastapi
+#           EOF
+
+
+name: Deploy FastAPI to EC2
 
 on:
   push:
     branches:
-      - main
+      - main  # Change to your deployment branch
 
 jobs:
   deploy:
-    name: Deploy API
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Deploy to Server
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-            cd /path/to/your/app
-            git pull origin main
-            source venv/bin/activate
-            pip install -r requirements.txt
-            sudo systemctl restart your-app.service
-          EOF
+    - name: Set up SSH Key
+      run: |
+        echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > private_key.pem
+        chmod 600 private_key.pem
+
+    - name: Deploy code to EC2
+      run: |
+        ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@13.60.87.195 << 'EOF'
+          cd /home/ubuntu/fastapi-book-project
+          git pull origin main
+          source /home/ubuntu/fastapi-book-project/venv/bin/activate
+          pip install -r requirements.txt
+          sudo systemctl restart fastapi
+        EOF
