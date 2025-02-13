@@ -1,0 +1,13 @@
+﻿2025-02-13T13:07:57.4834143Z Post job cleanup.
+2025-02-13T13:08:03.9537164Z [command]"C:\Program Files\Git\mingw64\bin\git.exe" version
+2025-02-13T13:08:04.0413611Z git version 2.46.0.windows.1
+2025-02-13T13:08:04.0698724Z Copying 'C:\Users\BLARD\.gitconfig' to 'C:\Users\BLARD\Desktop\fastapi-book-project\actions-runner\_work\_temp\769aaa07-899c-4f49-9649-b9e4548c20c0\.gitconfig'
+2025-02-13T13:08:04.0709062Z Temporarily overriding HOME='C:\Users\BLARD\Desktop\fastapi-book-project\actions-runner\_work\_temp\769aaa07-899c-4f49-9649-b9e4548c20c0' before making global git config changes
+2025-02-13T13:08:04.0730428Z Adding repository directory to the temporary git global config as a safe directory
+2025-02-13T13:08:04.0742958Z [command]"C:\Program Files\Git\mingw64\bin\git.exe" config --global --add safe.directory C:\Users\BLARD\Desktop\fastapi-book-project\actions-runner\_work\fastapi-book-project\fastapi-book-project
+2025-02-13T13:08:04.1561406Z [command]"C:\Program Files\Git\mingw64\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2025-02-13T13:08:04.2362513Z [command]"C:\Program Files\Git\mingw64\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2025-02-13T13:08:05.8594923Z [command]"C:\Program Files\Git\mingw64\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-02-13T13:08:05.9283013Z http.https://github.com/.extraheader
+2025-02-13T13:08:05.9596468Z [command]"C:\Program Files\Git\mingw64\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2025-02-13T13:08:06.0280979Z [command]"C:\Program Files\Git\mingw64\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
