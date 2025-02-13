@@ -1,61 +1,24 @@
-# name: Continuous Deployment (CD)
-
-# on:
-#   push:
-#     branches:
-#       - main  # Deploys when code is pushed to main
-
-# jobs:
-#   deploy:
-#     name: Deploy to AWS EC2
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v3
-
-#       - name: Set up SSH Key
-#         run: |
-#           echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > private_key.pem
-#           chmod 600 private_key.pem
-
-#       - name: Deploy to EC2
-#         run: |
-#           ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@13.60.87.195 << 'EOF'
-#             cd /home/ubuntu/fastapi-book-project
-#             git pull origin main
-#             source /home/ubuntu/fastapi-book-project/venv/bin/activate
-#             pip install -r requirements.txt
-#             sudo systemctl restart fastapi
-#           EOF
-
-
-name: Deploy FastAPI to EC2
+name: Continuous Deployment (CD)
 
 on:
   push:
     branches:
-      - main  # Change to your deployment branch
+      - feature/get_book_by_id  # Deploy when code is pushed to main
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    name: Deploy FastAPI
+    runs-on: self-hosted  # Runs on your Windows server
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Set up SSH Key
-      run: |
-        echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > private_key.pem
-        chmod 600 private_key.pem
-
-    - name: Deploy code to EC2
-      run: |
-        ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@13.60.87.195 << 'EOF'
-          cd /home/ubuntu/fastapi-book-project
+      - name: Pull Latest Code
+        run: |
           git pull origin main
-          source /home/ubuntu/fastapi-book-project/venv/bin/activate
-          pip install -r requirements.txt
-          sudo systemctl restart fastapi
-        EOF
+
+      - name: Restart FastAPI App
+        run: |
+          taskkill /IM uvicorn.exe /F || echo "Uvicorn not running"
+          start cmd /k "cd C:\Users\BLARD\Desktop\fastapi-book-project && venv\Scripts\activate && uvicorn main:app --host 127.0.0.1 --port 8000 --reload"
