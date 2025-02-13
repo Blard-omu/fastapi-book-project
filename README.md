@@ -81,8 +81,9 @@ uvicorn main:app --host 127.0.0.1 --port 8080 --reload # reload
 
 ## CD
 ```shell
-./config.cmd
+./config.cmd https://github.com/YOUR_USERNAME/YOUR_PROJECT 
 ./run.cmd
+./config.cmd --url https://github.com/Blard-omu/fastapi-book-project --token AYL4QVGUS5B53ZDKSMWX3Y3HVX52Q
 ```
 
 2. Access the API documentation:
