@@ -75,6 +75,7 @@ pip install -r requirements.txt
 
 ```bash
 uvicorn main:app
+uvicorn main:app --host 127.0.0.1 --port 8080 --reload # reload
 ```
 
 2. Access the API documentation:
