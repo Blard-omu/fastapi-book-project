@@ -1,10 +1,10 @@
 name: Continuous Deployment (CD)
 
 on:
-  push:
+  pull_request:
     branches:
     
-      - main 
+      - feature/get_book_by-id 
 
 jobs:
   deploy:

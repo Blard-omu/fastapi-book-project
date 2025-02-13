@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
     branches:
-      - main
+      - feature/get_book_by-id
 
 jobs:
   test:
