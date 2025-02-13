@@ -21,8 +21,4 @@ jobs:
       - name: Restart FastAPI App
         run: |
           taskkill /IM uvicorn.exe /F || echo "Uvicorn not running"
-<<<<<<< HEAD
           start cmd /k "cd C:\Users\BLARD\Desktop\fastapi-book-project && venv\Scripts\activate && uvicorn main:app --host 127.0.0.1 --port 8000 --reload"
-=======
-          start cmd /k "cd C:\Users\BLARD\Desktop\fastapi-book-project && venv\Scripts\activate && uvicorn main:app --host 127.0.0.1 --port 8080 --reload"
->>>>>>> 79339fd74a09f994ceeae658c6424c0089bfd766
