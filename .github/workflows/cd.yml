@@ -3,7 +3,7 @@ name: Continuous Deployment (CD)
 on:
   push:
     branches:
-      - feature/get_book_by_id  # Deploy when code is pushed to main
+      - feature/get_book_by-id  # Deploy when code is pushed to main
 
 jobs:
   deploy:
@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Pull Latest Code
         run: |
