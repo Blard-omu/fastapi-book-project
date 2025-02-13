@@ -1,6 +1,6 @@
 ﻿{
-  "agentId": 21,
-  "agentName": "local-runner",
+  "agentId": 22,
+  "agentName": "BLARD",
   "poolId": 1,
   "poolName": "Default",
   "serverUrl": "https://pipelinesghubeus11.actions.githubusercontent.com/ZyE8Z03hmejoBsfxDS8AdMr6kh2C3NE8swVL8UIgcPwnejMgSO/",

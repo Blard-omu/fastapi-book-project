@@ -76,6 +76,13 @@ pip install -r requirements.txt
 ```bash
 uvicorn main:app
 uvicorn main:app --host 127.0.0.1 --port 8080 --reload # reload
+.\run.cmd
+```
+
+## CD
+```shell
+./config.cmd
+./run.cmd
 ```
 
 2. Access the API documentation:
