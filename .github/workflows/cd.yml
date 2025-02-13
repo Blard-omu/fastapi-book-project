@@ -15,8 +15,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
-        submodules: false
-        fetch-depth: 0
+          submodules: false
+          fetch-depth: 0
 
       - name: Pull Latest Code
         run: |
